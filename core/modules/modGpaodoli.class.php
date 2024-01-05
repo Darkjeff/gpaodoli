@@ -296,7 +296,7 @@ class modGpaodoli extends DolibarrModules
 		$r = 0;
 		// Add here entries to declare new menus
 		/* BEGIN MODULEBUILDER TOPMENU */
-		$this->menu[$r++] = array(
+		/*$this->menu[$r++] = array(
 			'fk_menu'=>'', // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
 			'type'=>'top', // This is a Top menu entry
 			'titre'=>'ModuleGpaodoliName',
@@ -310,7 +310,7 @@ class modGpaodoli extends DolibarrModules
 			'perms'=>'1', // Use 'perms'=>'$user->hasRight("gpaodoli", "myobject", "read")' if you want your menu with a permission rules
 			'target'=>'',
 			'user'=>2, // 0=Menu for internal users, 1=external users, 2=both
-		);
+		);*/
 		/* END MODULEBUILDER TOPMENU */
 		/* BEGIN MODULEBUILDER LEFTMENU MYOBJECT */
 		/*$this->menu[$r++]=array(
@@ -444,9 +444,9 @@ class modGpaodoli extends DolibarrModules
 		}
 
 		// Create extrafields during init
-		//include_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
-		//$extrafields = new ExtraFields($this->db);
-		//$result1=$extrafields->addExtraField('gpaodoli_myattr1', "New Attr 1 label", 'boolean', 1,  3, 'thirdparty',   0, 0, '', '', 1, '', 0, 0, '', '', 'gpaodoli@gpaodoli', 'isModEnabled("gpaodoli")');
+		include_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
+		$extrafields = new ExtraFields($this->db);
+		$result1=$extrafields->addExtraField('subcontractor', "gpaoDoliSubcontractor", 'link', 100,  '', 'mrp_mo',   0, 0, '', array('options'=>array('Societe:societe/class/societe.class.php'=>null)), 1, '', 1, 0, '', '', 'gpaodoli@gpaodoli', 'isModEnabled("gpaodoli")',0,1);
 		//$result2=$extrafields->addExtraField('gpaodoli_myattr2', "New Attr 2 label", 'varchar', 1, 10, 'project',      0, 0, '', '', 1, '', 0, 0, '', '', 'gpaodoli@gpaodoli', 'isModEnabled("gpaodoli")');
 		//$result3=$extrafields->addExtraField('gpaodoli_myattr3', "New Attr 3 label", 'varchar', 1, 10, 'bank_account', 0, 0, '', '', 1, '', 0, 0, '', '', 'gpaodoli@gpaodoli', 'isModEnabled("gpaodoli")');
 		//$result4=$extrafields->addExtraField('gpaodoli_myattr4', "New Attr 4 label", 'select',  1,  3, 'thirdparty',   0, 1, '', array('options'=>array('code1'=>'Val1','code2'=>'Val2','code3'=>'Val3')), 1,'', 0, 0, '', '', 'gpaodoli@gpaodoli', 'isModEnabled("gpaodoli")');
@@ -458,7 +458,7 @@ class modGpaodoli extends DolibarrModules
 		$sql = array();
 
 		// Document templates
-		$moduledir = dol_sanitizeFileName('gpaodoli');
+		/*$moduledir = dol_sanitizeFileName('gpaodoli');
 		$myTmpObjects = array();
 		$myTmpObjects['MyObject'] = array('includerefgeneration'=>0, 'includedocgeneration'=>0);
 
@@ -489,7 +489,7 @@ class modGpaodoli extends DolibarrModules
 					"INSERT INTO ".MAIN_DB_PREFIX."document_model (nom, type, entity) VALUES('generic_".strtolower($myTmpObjectKey)."_odt', '".$this->db->escape(strtolower($myTmpObjectKey))."', ".((int) $conf->entity).")"
 				));
 			}
-		}
+		}*/
 
 		return $this->_init($sql, $options);
 	}
