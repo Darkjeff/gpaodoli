@@ -295,6 +295,21 @@ class modGpaodoli extends DolibarrModules
 		$this->menu = array();
 		$r = 0;
 		// Add here entries to declare new menus
+		$this->menu[$r++]=array(
+			'fk_menu'=>'fk_mainmenu=products,fk_leftmenu=stock',	    // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
+			'type'=>'left',			                // This is a Left menu entry
+			'titre'=>'gpaoDoliMenuProd',
+			'mainmenu'=>'products',
+			'leftmenu'=>'gpaoDoliMenuProd',
+			'url'=>'/gpaodoli/replenish_mrp.php',
+			'langs'=>'gpaodoli@gpaodoli',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
+			'position'=>1000+$r,
+			'enabled'=>'isModEnabled("gpaodoli")', // Define condition to show or hide menu entry. Use 'isModEnabled("gpaodoli")' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
+			'perms'=>'$user->hasRight("mrp", "write")',
+			'target'=>'',
+			'user'=>0,				                // 0=Menu for internal users, 1=external users, 2=both
+		);
+
 		/* BEGIN MODULEBUILDER TOPMENU */
 		/*$this->menu[$r++] = array(
 			'fk_menu'=>'', // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode

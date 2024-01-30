@@ -54,4 +54,8 @@ MyWidget = My widget
 MyWidgetDescription = My widget description
 
 
+gpaoDoliMenuProd=Réappro par OF.
+
 gpaoDoliSubcontractor=Sous traitant
+gpaoDoliOrderNotClosed= Commande client (non traitée)
+gpaoDoliMenuProdDesc=Ceci est une liste de tous les produits avec une nomenclature par défaut avec un stock inférieur au stock souhaité (ou inférieure à la valeur d'alerte si la case "alerte uniquement" est cochée). En sélectionnant la ligne, vous pouvez créer les Ordre de fabrication pour compléter la différence.
